@@ -1,9 +1,15 @@
+
+
+
+CREATE DATABASE pasteleria CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE pasteleria;
+
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2025 a las 20:39:30
+-- Tiempo de generación: 07-11-2025 a las 20:49:32
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -92,7 +98,7 @@ ALTER TABLE `pastel_ingrediente`
 -- AUTO_INCREMENT de la tabla `ingredientes`
 --
 ALTER TABLE `ingredientes`
-  MODIFY `id_ingrediente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_ingrediente` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `pasteles`
