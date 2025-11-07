@@ -3,8 +3,6 @@
     <h2>Gestión de Ingredientes</h2>
     <form @submit.prevent="guardarIngrediente">
       <input v-model="ingrediente.nombre" placeholder="Nombre" />
-      <textarea v-model="ingrediente.descripcion" placeholder="Descripción"></textarea>
-      <input type="date" v-model="ingrediente.fecha_vencimiento" />
       <button type="submit">{{ ingrediente.id_ingrediente ? "Actualizar" : "Guardar" }}</button>
     </form>
 
@@ -12,7 +10,7 @@
     <h3>Lista de Ingredientes</h3>
     <ul>
       <li v-for="i in ingredientes" :key="i.id_ingrediente">
-        {{ i.nombre }} - {{ i.descripcion }}
+        {{ i.nombre }}
         <button @click="editarIngrediente(i)">Editar</button>
         <button @click="eliminarIngrediente(i.id_ingrediente)">Eliminar</button>
       </li>
@@ -26,7 +24,7 @@ export default {
   data() {
     return {
       ingredientes: [],
-      ingrediente: { nombre: "", descripcion: "", fecha_vencimiento: "" }
+      ingrediente: { nombre: "" }
     };
   },
   mounted() {

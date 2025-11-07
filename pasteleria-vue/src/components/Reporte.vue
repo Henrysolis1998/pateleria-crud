@@ -8,6 +8,7 @@
           <th>Preparado por</th>
           <th>Descripción</th>
           <th>Ingredientes</th>
+          <th>Creado</th>
           <th>Vencimiento</th>
         </tr>
       </thead>
@@ -17,6 +18,7 @@
           <td>{{ p.preparado_por }}</td>
           <td>{{ p.descripcion }}</td>
           <td>{{ p.ingredientes }}</td>
+          <td>{{ p.fecha_creado }}</td>
           <td>{{ p.fecha_vencimiento }}</td>
         </tr>
       </tbody>

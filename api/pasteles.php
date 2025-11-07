@@ -20,11 +20,16 @@ switch($method) {
     case 'POST':
         $data = json_decode(file_get_contents("php://input"), true);
 
+        // Inserta solo fecha_vencimiento; fecha_creado se genera automáticamente
         $stmt = $conn->prepare("INSERT INTO pasteles (nombre, descripcion, preparado_por, fecha_vencimiento)
                                 VALUES (?, ?, ?, ?)");
-        $stmt->execute([$data['nombre'], $data['descripcion'], $data['preparado_por'], $data['fecha_vencimiento']]);
+        // Asegúrate de que fecha_vencimiento tenga formato 'YYYY-MM-DD HH:MM:SS'
+        $fechaVenc = date('Y-m-d H:i:s', strtotime($data['fecha_vencimiento']));
+        $stmt->execute([$data['nombre'], $data['descripcion'], $data['preparado_por'], $fechaVenc]);
+
         $idPastel = $conn->lastInsertId();
 
+        // Insertar ingredientes en la tabla puente
         if (!empty($data['ingredientes'])) {
             $stmtIng = $conn->prepare("INSERT INTO pastel_ingrediente (id_pastel, id_ingrediente) VALUES (?, ?)");
             foreach ($data['ingredientes'] as $idIng) {
@@ -37,8 +42,11 @@ switch($method) {
 
     case 'PUT':
         $data = json_decode(file_get_contents("php://input"), true);
+
+        // Actualizar pastel, sin modificar fecha_creado
         $stmt = $conn->prepare("UPDATE pasteles SET nombre=?, descripcion=?, preparado_por=?, fecha_vencimiento=? WHERE id_pastel=?");
-        $stmt->execute([$data['nombre'], $data['descripcion'], $data['preparado_por'], $data['fecha_vencimiento'], $data['id_pastel']]);
+        $fechaVenc = date('Y-m-d H:i:s', strtotime($data['fecha_vencimiento']));
+        $stmt->execute([$data['nombre'], $data['descripcion'], $data['preparado_por'], $fechaVenc, $data['id_pastel']]);
 
         // Actualizar ingredientes
         $conn->prepare("DELETE FROM pastel_ingrediente WHERE id_pastel=?")->execute([$data['id_pastel']]);

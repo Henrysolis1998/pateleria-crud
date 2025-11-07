@@ -6,7 +6,9 @@
       <input v-model="pastel.nombre" placeholder="Nombre" />
       <textarea v-model="pastel.descripcion" placeholder="Descripción"></textarea>
       <input v-model="pastel.preparado_por" placeholder="Preparado por" />
+      <input type="date" v-model="pastel.fecha_creado" />
       <input type="date" v-model="pastel.fecha_vencimiento" />
+
       
       <h4>Seleccionar Ingredientes</h4>
       <div v-for="ing in ingredientes" :key="ing.id_ingrediente">
@@ -37,7 +39,7 @@ export default {
     return {
       pasteles: [],
       ingredientes: [],
-      pastel: { nombre: "", descripcion: "", preparado_por: "", fecha_vencimiento: "", ingredientes: [] }
+      pastel: { nombre: "", descripcion: "", preparado_por: "", fecha_creado: "", fecha_vencimiento:  "", ingredientes: [] }
     };
   },
   mounted() {
@@ -56,7 +58,7 @@ export default {
       const method = this.pastel.id_pastel ? axios.put : axios.post;
       method(url, this.pastel).then(() => {
         this.cargarPasteles();
-        this.pastel = { nombre: "", descripcion: "", preparado_por: "", fecha_vencimiento: "", ingredientes: [] };
+        this.pastel = { nombre: "", descripcion: "", preparado_por: "", fecha_creado: "", fecha_vencimiento: "", ingredientes: [] };
       });
     },
     editarPastel(p) {
