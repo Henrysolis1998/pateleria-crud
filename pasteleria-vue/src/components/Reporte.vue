@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="container">
     <h2>Reporte de Pasteles e Ingredientes</h2>
-    <table border="1" cellpadding="6">
+    <table>
       <thead>
         <tr>
           <th>Pastel</th>
@@ -17,7 +17,7 @@
           <td>{{ p.nombre }}</td>
           <td>{{ p.preparado_por }}</td>
           <td>{{ p.descripcion }}</td>
-          <td>{{ p.ingredientes }}</td>
+          <td class="ingredientes">{{ p.ingredientes || 'Sin ingredientes' }}</td>
           <td>{{ p.fecha_creado }}</td>
           <td>{{ p.fecha_vencimiento }}</td>
         </tr>
@@ -28,12 +28,15 @@
 
 <script>
 import axios from "axios";
+import '../assets/styles/reportePasteles.css';
+
 export default {
   data() {
     return { pasteles: [] };
   },
   mounted() {
-    axios.get("http://localhost/pasteleria_crud/api/pasteles.php").then(res => this.pasteles = res.data);
+    axios.get("http://localhost/pasteleria_crud/api/pasteles.php")
+      .then(res => this.pasteles = res.data);
   }
 };
 </script>

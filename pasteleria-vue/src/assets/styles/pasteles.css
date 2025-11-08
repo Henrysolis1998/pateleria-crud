@@ -1,0 +1,123 @@
+/* Contenedor principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f7f7f7;
+}
+
+/* Formulario */
+.form-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.form-card input,
+.form-card textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.form-card button.btn-primary {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.form-card button.btn-primary:hover {
+  background-color: #45a049;
+}
+
+/* Lista de pasteles con grid */
+.pastel-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+/* Cada tarjeta de pastel */
+.pastel-card {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.pastel-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Información del pastel */
+.pastel-info {
+  flex: 2;
+  margin-right: 15px;
+}
+
+.pastel-info strong {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.card-buttons {
+  margin-top: 10px;
+}
+
+.card-buttons button {
+  margin-right: 8px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.card-buttons .btn-edit {
+  background-color: #2196F3;
+  color: white;
+}
+
+.card-buttons .btn-edit:hover {
+  background-color: #1976D2;
+}
+
+.card-buttons .btn-delete {
+  background-color: #f44336;
+  color: white;
+}
+
+.card-buttons .btn-delete:hover {
+  background-color: #d32f2f;
+}
+
+/* Ingredientes a la derecha */
+.pastel-ingredientes {
+  flex: 1;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.9em;
+}
+
+.pastel-ingredientes ul {
+  padding-left: 18px;
+  margin: 5px 0 0 0;
+}
+
+.pastel-ingredientes li {
+  margin-bottom: 3px;
+}
